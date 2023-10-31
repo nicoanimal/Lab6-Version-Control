@@ -14,7 +14,32 @@ def encoder(password):
     for i in range(0, len(encoded)):
         encoded[i] = str(encoded[i])
 
-    print("".join(encoded))
+    return "".join(encoded)
+
+
+'''
+Written by: Case Zumbrum
+
+decode() encodes an integer password by decreasing each integer by 3
+
+Input:
+    password (String): password to be encoded, all characters must be integers and there should be 8 digits
+
+Return:
+    decoded_password (String): encoded password
+'''
+def decode(password):
+    decoded_password = ''
+    for char in password:
+        if char == '0':
+            decoded_password += str(7)
+        elif char == '1':
+            decoded_password += str(8)
+        elif char == '2':
+            decoded_password += str(9)
+        else:
+            decoded_password += str(int(char)-3)
+    return decoded_password
 
 
 while True:
@@ -22,10 +47,11 @@ while True:
     menu = input("Please enter an option: ")
     if menu == '1':
         password = input("Please enter your password to encode: ")
-        encoder(password)
+        encoded = encoder(password)
         print("Your password has been encoded and stored!")
     elif menu == '2':
-        print("Nothing happens yet")
+        decoded = decode(encoded)
+        print(f"The encoded password is {encoded}, and the original password is {decoded}.")
     elif menu == '3':
         break
     else:
